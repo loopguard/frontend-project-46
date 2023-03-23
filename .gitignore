@@ -6,3 +6,4 @@ npm-debug.log
 .vscode
 run.sh
 src/dev.js
+coverage

@@ -13,9 +13,6 @@ test:
 test-coverage:
 	npm test -- --coverage --coverageProvider=v8
 
-install:
-	npm ci
-
 publish:
 	npm publish --dry-run
 
@@ -27,9 +24,3 @@ lint:
 
 lint-fix:
 	npx eslint . --fix
-
-test:
-	NODE_OPTIONS=--experimental-vm-modules npx jest
-
-test-coverage:
-	npm test -s -- --coverage functions.test.js

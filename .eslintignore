@@ -1,0 +1,5 @@
+/node_modules
+/configurations
+**/*.conf.js
+**/*.d.ts
+**/ci.js

@@ -5,18 +5,18 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/e47f96788897b183ea33/test_coverage)](https://codeclimate.com/github/loopguard/frontend-project-46/test_coverage)
 
 ### Description
-CLI util for calculate diff between two files
+CLI util for compares two configuration files and shows a difference
 
 ### Install
-    git clone git@github.com:loopguard/frontend-project-44.git
-    cd frontend-project-44
+    git clone git@github.com:loopguard/frontend-project-46.git
+    cd frontend-project-46
     make install
     npm link
 
 ### Usage example
     gendiff <filepath1> <filepath1> --format <format>
 
-#### Available output format
+### Available output format
 - plain
 - json
 - pretty

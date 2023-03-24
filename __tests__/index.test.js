@@ -7,7 +7,7 @@ const __dirname = path.dirname(__filename);
 
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 
-const expectedOutDefault = '{\n'
+const expectedOutStylish = '{\n'
   + '    common: {\n'
   + '      + follow: false\n'
   + '        setting1: Value 1\n'
@@ -64,20 +64,20 @@ const expectedOutPlain = 'Property \'common.follow\' was added with value: false
   + 'Property \'group2\' was removed\n'
   + 'Property \'group3\' was added with value: [complex value]';
 
-const expectedOutJson = '[{"key":"common","value":[{"key":"follow","value":false,"state":"added"},{"key":"setting1","value":"Value 1","state":"unchanged"},{"key":"setting2","value":200,"state":"removed"},{"key":"setting3","value":{"oldValue":true,"newValue":null},"state":"updated"},{"key":"setting4","value":"blah blah","state":"added"},{"key":"setting5","value":{"key5":"value5"},"state":"added"},{"key":"setting6","value":[{"key":"doge","value":[{"key":"wow","value":{"oldValue":"","newValue":"so much"},"state":"updated"}],"state":"object"},{"key":"key","value":"value","state":"unchanged"},{"key":"ops","value":"vops","state":"added"}],"state":"object"}],"state":"object"},{"key":"group1","value":[{"key":"baz","value":{"oldValue":"bas","newValue":"bars"},"state":"updated"},{"key":"foo","value":"bar","state":"unchanged"},{"key":"nest","value":{"oldValue":{"key":"value"},"newValue":"str"},"state":"updated"}],"state":"object"},{"key":"group2","value":{"abc":12345,"deep":{"id":45}},"state":"removed"},{"key":"group3","value":{"deep":{"id":{"number":45}},"fee":100500},"state":"added"}]';
+const expectedOutJson = '[{"key":"common","value":[{"key":"follow","value":false,"state":"added"},{"key":"setting1","value":"Value 1","state":"unchanged"},{"key":"setting2","value":200,"state":"removed"},{"key":"setting3","value":{"oldValue":true,"newValue":null},"state":"changed"},{"key":"setting4","value":"blah blah","state":"added"},{"key":"setting5","value":{"key5":"value5"},"state":"added"},{"key":"setting6","value":[{"key":"doge","value":[{"key":"wow","value":{"oldValue":"","newValue":"so much"},"state":"changed"}],"state":"object"},{"key":"key","value":"value","state":"unchanged"},{"key":"ops","value":"vops","state":"added"}],"state":"object"}],"state":"object"},{"key":"group1","value":[{"key":"baz","value":{"oldValue":"bas","newValue":"bars"},"state":"changed"},{"key":"foo","value":"bar","state":"unchanged"},{"key":"nest","value":{"oldValue":{"key":"value"},"newValue":"str"},"state":"changed"}],"state":"object"},{"key":"group2","value":{"abc":12345,"deep":{"id":45}},"state":"removed"},{"key":"group3","value":{"deep":{"id":{"number":45}},"fee":100500},"state":"added"}]';
 
 test('pretty_diff_json_success', () => {
   const filename1 = getFixturePath('file1.json');
   const filename2 = getFixturePath('file2.json');
 
-  expect(genDiff(filename1, filename2, 'pretty')).toBe(expectedOutDefault);
+  expect(genDiff(filename1, filename2, 'stylish')).toBe(expectedOutStylish);
 });
 
 test('pretty_diff_yml_success', () => {
   const filename1 = getFixturePath('file1.yml');
   const filename2 = getFixturePath('file2.yml');
 
-  expect(genDiff(filename1, filename2, 'pretty')).toBe(expectedOutDefault);
+  expect(genDiff(filename1, filename2, 'stylish')).toBe(expectedOutStylish);
 });
 
 test('plain_diff_json_success', () => {
@@ -106,4 +106,18 @@ test('json_diff_yml_success', () => {
   const filename2 = getFixturePath('file2.yml');
 
   expect(genDiff(filename1, filename2, 'json')).toBe(expectedOutJson);
+});
+
+test('default_diff_json_success', () => {
+  const filename1 = getFixturePath('file1.json');
+  const filename2 = getFixturePath('file2.json');
+
+  expect(genDiff(filename1, filename2)).toBe(expectedOutStylish);
+});
+
+test('default_diff_yml_success', () => {
+  const filename1 = getFixturePath('file1.yml');
+  const filename2 = getFixturePath('file2.yml');
+
+  expect(genDiff(filename1, filename2)).toBe(expectedOutStylish);
 });

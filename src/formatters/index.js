@@ -1,11 +1,11 @@
-import formatPlain from './plain.js';
 import formatJson from './json.js';
-import formatPretty from './pretty.js';
+import formatPlain from './plain.js';
+import formatStylish from './stylish.js';
 
 const formatters = {
-  plain: formatPlain,
   json: formatJson,
-  pretty: formatPretty,
+  plain: formatPlain,
+  stylish: formatStylish,
 };
 
 export default (diff, formatName) => formatters[formatName](diff);

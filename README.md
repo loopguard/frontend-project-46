@@ -19,7 +19,7 @@ CLI util for compares two configuration files and shows a difference
 ### Available output format
 - plain
 - json
-- pretty
+- stylish
 
 ### Demo
-[![asciicast](https://asciinema.org/a/LR558yPD1gTqvySBTH9avV7o2.svg)](https://asciinema.org/a/LR558yPD1gTqvySBTH9avV7o2)
+[![asciicast](https://asciinema.org/a/LR558yPD1gTqvySBTH9avV7o2.svg)](https://asciinema.org/a/LR558yPD1gTqvySBTH9avV7o2?loop=1&autoplay=0&speed=1.5)

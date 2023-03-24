@@ -16,7 +16,7 @@ const findDiff = (left, right) => {
     if (_.isObject(left[key]) && _.isObject(right[key])) {
       return { key, value: findDiff(left[key], right[key]), state: 'object' };
     }
-    return { key, value: { oldValue: left[key], newValue: right[key] }, state: 'updated' };
+    return { key, value: { oldValue: left[key], newValue: right[key] }, state: 'changed' };
   });
 };
 

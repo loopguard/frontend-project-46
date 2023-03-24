@@ -23,7 +23,7 @@ const formatPlain = (diff, path = []) => diff
         const propVal = wrapObject(item.value);
         return `Property '${propKey}' was added with value: ${propVal}`;
       }
-      case 'updated': {
+      case 'changed': {
         const oldPropVal = wrapObject(item.value.oldValue);
         const newPropVal = wrapObject(item.value.newValue);
         return `Property '${propKey}' was updated. From ${oldPropVal} to ${newPropVal}`;

@@ -16,18 +16,18 @@ const wrapObject = (obj, depth) => {
   return wrapBrackets(items.join('\n'), depth);
 };
 
-const formatPretty = (diff, depth = 0) => wrapBrackets(diff.flatMap(({ key, value, state }) => {
+const formatStylish = (diff, depth = 0) => wrapBrackets(diff.flatMap(({ key, value, state }) => {
   const chars = { added: '+ ', removed: '- ', unchanged: '  ' };
-  if (state === 'updated') {
+  if (state === 'changed') {
     return [
       wrapLine(key, wrapObject(value.oldValue, depth + 1), chars.removed, depth + 1),
       wrapLine(key, wrapObject(value.newValue, depth + 1), chars.added, depth + 1),
     ];
   }
   if (state === 'object') {
-    return wrapLine(key, formatPretty(value, depth + 1), '  ', depth + 1);
+    return wrapLine(key, formatStylish(value, depth + 1), '  ', depth + 1);
   }
   return wrapLine(key, wrapObject(value, depth + 1), chars[state], depth + 1);
 }).join('\n'), depth);
 
-export default formatPretty;
+export default formatStylish;

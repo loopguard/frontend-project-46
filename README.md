@@ -4,5 +4,22 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/e47f96788897b183ea33/maintainability)](https://codeclimate.com/github/loopguard/frontend-project-46/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/e47f96788897b183ea33/test_coverage)](https://codeclimate.com/github/loopguard/frontend-project-46/test_coverage)
 
-#### Find diff between two files
-[![asciicast](https://asciinema.org/a/oH7WvRHiIzwerAMCzrcFlslGj.svg)](https://asciinema.org/a/oH7WvRHiIzwerAMCzrcFlslGj)
+### Description
+CLI util for calculate diff between two files
+
+### Install
+    git clone git@github.com:loopguard/frontend-project-44.git
+    cd frontend-project-44
+    make install
+    npm link
+
+### Usage example
+    gendiff <filepath1> <filepath1> --format <format>
+
+#### Available output format
+- plain
+- json
+- pretty
+
+### Demo
+[![asciicast](https://asciinema.org/a/LR558yPD1gTqvySBTH9avV7o2.svg)](https://asciinema.org/a/LR558yPD1gTqvySBTH9avV7o2)

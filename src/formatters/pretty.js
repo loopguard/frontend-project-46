@@ -16,7 +16,7 @@ const wrapObject = (obj, depth) => {
   return wrapBrackets(items.join('\n'), depth);
 };
 
-const formatDefault = (diff, depth = 0) => wrapBrackets(diff.flatMap(({ key, value, state }) => {
+const formatPretty = (diff, depth = 0) => wrapBrackets(diff.flatMap(({ key, value, state }) => {
   const chars = { added: '+ ', removed: '- ', unchanged: '  ' };
   if (state === 'updated') {
     return [
@@ -25,9 +25,9 @@ const formatDefault = (diff, depth = 0) => wrapBrackets(diff.flatMap(({ key, val
     ];
   }
   if (state === 'object') {
-    return wrapLine(key, formatDefault(value, depth + 1), '  ', depth + 1);
+    return wrapLine(key, formatPretty(value, depth + 1), '  ', depth + 1);
   }
   return wrapLine(key, wrapObject(value, depth + 1), chars[state], depth + 1);
 }).join('\n'), depth);
 
-export default formatDefault;
+export default formatPretty;

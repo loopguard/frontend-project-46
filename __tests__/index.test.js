@@ -7,7 +7,7 @@ const __dirname = path.dirname(__filename);
 
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 
-const expectedOut = '{\n'
+const expectedOutDefault = '{\n'
   + '    common: {\n'
   + '      + follow: false\n'
   + '        setting1: Value 1\n'
@@ -52,16 +52,42 @@ const expectedOut = '{\n'
   + '    }\n'
   + '}';
 
-test('success json diff', () => {
+const expectedOutPlain = 'Property \'common.follow\' was added with value: false\n'
+  + 'Property \'common.setting2\' was removed\n'
+  + 'Property \'common.setting3\' was updated. From true to null\n'
+  + 'Property \'common.setting4\' was added with value: \'blah blah\'\n'
+  + 'Property \'common.setting5\' was added with value: [complex value]\n'
+  + 'Property \'common.setting6.doge.wow\' was updated. From \'\' to \'so much\'\n'
+  + 'Property \'common.setting6.ops\' was added with value: \'vops\'\n'
+  + 'Property \'group1.baz\' was updated. From \'bas\' to \'bars\'\n'
+  + 'Property \'group1.nest\' was updated. From [complex value] to \'str\'\n'
+  + 'Property \'group2\' was removed\n'
+  + 'Property \'group3\' was added with value: [complex value]';
+
+test('default_diff_json_success', () => {
   const filename1 = getFixturePath('file1.json');
   const filename2 = getFixturePath('file2.json');
 
-  expect(genDiff(filename1, filename2)).toBe(expectedOut);
+  expect(genDiff(filename1, filename2, 'default')).toBe(expectedOutDefault);
 });
 
-test('success yml diff', () => {
+test('default_diff_yml_success', () => {
   const filename1 = getFixturePath('file1.yml');
   const filename2 = getFixturePath('file2.yml');
 
-  expect(genDiff(filename1, filename2)).toBe(expectedOut);
+  expect(genDiff(filename1, filename2, 'default')).toBe(expectedOutDefault);
+});
+
+test('plain_diff_json_success', () => {
+  const filename1 = getFixturePath('file1.json');
+  const filename2 = getFixturePath('file2.json');
+
+  expect(genDiff(filename1, filename2, 'plain')).toBe(expectedOutPlain);
+});
+
+test('plain_diff_yml_success', () => {
+  const filename1 = getFixturePath('file1.yml');
+  const filename2 = getFixturePath('file2.yml');
+
+  expect(genDiff(filename1, filename2, 'plain')).toBe(expectedOutPlain);
 });
